@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>#{str.cinemaListTitle}</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="/templates/template.xhtml">
+            <ui:define name="contenido">
+                <h1>#{str.cinemaListTitle}</h1>
+                <h:form>
+                    <p:commandButton value="#{str.buttonAdd}"
+                                     action="#{cineBean.iniciar()}"></p:commandButton>                          
+                </h:form>
+                <p:dataTable value="#{cineBean.cines}" var="c">
+                    <p:column headerText="#{str.action}">
+                        <h:form>
+                            <p:commandButton value="#{str.buttonEdit}"
+                                             action="#{cineBean.editar(c)}"></p:commandButton>
+                        </h:form>
+                    </p:column>
+                    <p:column headerText="#{str.idCinemaHeader}">
+                        <p:outputLabel value="#{c.idCine}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.nameCinemaPrompt}">
+                        <p:outputLabel value="#{c.nombreCine}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.adressCinemaPrompt}">
+                        <p:outputLabel value="#{c.direccion}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.adressCinemaHeader}">
+                        <p:outputLabel value="#{c.pelicula.nombre}"></p:outputLabel>
+                    </p:column>
+                    <p:column headerText="#{str.emailCinema}">
+                        <p:outputLabel value="#{c.correo}"></p:outputLabel>
+                    </p:column>
+                    
+                    
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
+
